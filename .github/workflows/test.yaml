@@ -1,18 +1,36 @@
-name: Docker Image CI
-
+name: Deploy to ECR
 on:
   push:
-    branches: [ "test" ]
+    branches: [ test ]
   pull_request:
-    branches: [ "test" ]
+    branches: [ test ]
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: 862166188271.dkr.ecr.ap-south-1.amazonaws.com/dialogflow
+  IMAGE_TAG: test
 
 jobs:
-
   build:
-
+    name: Build Image
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      run: |
+        docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REPOSITORY:$IMAGE_TAG
