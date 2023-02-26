@@ -16,44 +16,11 @@ jobs:
     environment: dev
 
     steps:
-            # - name: Check out my other private repo
-            #uses: actions/checkout@master
-            #with:
-            #repository: manu6300/src
-            # token: ${{ secrets.my_src_pat }}
-
     - name: cloning repo
       uses: actions/checkout@v2
-      #with:
-      # ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      #- name: cloning repo22    
-      #run: |
-      # git config --global url.https://github.com/.insteadOf git://github.com/      
-      # git clone https://github.com/manu6300/src.git
     - name: cloning repo docs
       uses: actions/checkout@v2
       with:
         reposetory: manu6300/src
         token: ${{ secrets.my_src_pat }}
         path: .
-
-    - name: Check out code
-      uses: actions/checkout@v3
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-
-    - name: Build, tag, and push image to Amazon ECR
-      run: |
-        docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REPOSITORY:$IMAGE_TAG
