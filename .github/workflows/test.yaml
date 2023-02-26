@@ -31,7 +31,7 @@ jobs:
       #run: |
       # git config --global url.https://github.com/.insteadOf git://github.com/      
       # git clone https://github.com/manu6300/src.git
-   - name: cloning repo docs
+    - name: cloning repo docs
      uses: actions/checkout@v2
      with:
        reposetory: manu6300/src
