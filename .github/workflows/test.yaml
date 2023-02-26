@@ -16,21 +16,27 @@ jobs:
     environment: dev
 
     steps:
-    - name: Check out my other private repo
-      uses: actions/checkout@master
-      with:
-        repository: manu6300/src
-        token: ${{ secrets.my_src_pat }}
+            # - name: Check out my other private repo
+            #uses: actions/checkout@master
+            #with:
+            #repository: manu6300/src
+            # token: ${{ secrets.my_src_pat }}
 
     - name: cloning repo
       uses: actions/checkout@v2
-      with:
-        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #with:
+      # ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: cloning repo22    
-      run: |
-        git config --global url.https://github.com/.insteadOf git://github.com/      
-        git clone https://github.com/manu6300/src.git
+      #- name: cloning repo22    
+      #run: |
+      # git config --global url.https://github.com/.insteadOf git://github.com/      
+      # git clone https://github.com/manu6300/src.git
+   - name: cloning repo docs
+     uses: actions/checkout@v2
+     with:
+       reposetory: manu6300/src
+       token: ${{ secrets.my_src_pat }}
+       path: .
 
     - name: Check out code
       uses: actions/checkout@v3
