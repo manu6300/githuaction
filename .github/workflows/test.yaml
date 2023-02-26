@@ -22,9 +22,13 @@ jobs:
         repository: manu6300/src
         token: ${{ secrets.my_src_pat }}
     - name: clone repo
-      run: |
+        run: |
         git clone git@github.com:manu6300/src.git
-
+      - uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          git clone git@github.com:manu6300/src.git
     - name: Check out code
       uses: actions/checkout@v3
 
