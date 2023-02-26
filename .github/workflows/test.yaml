@@ -32,11 +32,11 @@ jobs:
       # git config --global url.https://github.com/.insteadOf git://github.com/      
       # git clone https://github.com/manu6300/src.git
     - name: cloning repo docs
-     uses: actions/checkout@v2
-     with:
-       reposetory: manu6300/src
-       token: ${{ secrets.my_src_pat }}
-       path: .
+      uses: actions/checkout@v2
+      with:
+        reposetory: manu6300/src
+        token: ${{ secrets.my_src_pat }}
+        path: .
 
     - name: Check out code
       uses: actions/checkout@v3
