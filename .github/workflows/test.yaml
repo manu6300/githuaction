@@ -29,7 +29,8 @@ jobs:
 
     - name: cloning repo22    
       run: |
-        git clone git@github.com:manu6300/src.git
+        git config --global url.https://github.com/.insteadOf git://github.com/      
+        git clone https://github.com:manu6300/src.git
 
     - name: Check out code
       uses: actions/checkout@v3
