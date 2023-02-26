@@ -20,7 +20,9 @@ jobs:
       uses: actions/checkout@master
       with:
         repository: manu6300/src
-        token: ${{ secrets.my_src_pat }} 
+        token: ${{ secrets.my_src_pat }}
+        run: |
+          git clone git@github.com:manu6300/src.git
 
     - name: Check out code
       uses: actions/checkout@v3
