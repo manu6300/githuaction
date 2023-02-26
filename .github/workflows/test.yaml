@@ -30,6 +30,12 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
+    - name: Check out my other private repo
+      uses: actions/checkout@master
+      with:
+        repository: manoharcc3/src
+        token: ${{ secrets.my_src_pat }}
+
     - name: Build, tag, and push image to Amazon ECR
       run: |
         docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
