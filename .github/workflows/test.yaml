@@ -7,7 +7,7 @@ on:
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: 862166188271.dkr.ecr.ap-south-1.amazonaws.com/dialogflow
-  IMAGE_TAG: test
+  IMAGE_TAG: ${GITHUB_REF##*/}-${GITHUB_SHA::7}
 
 jobs:
   build:
@@ -17,4 +17,4 @@ jobs:
 
     steps:
     - name: step
-      run: echo ${GITHUB_SHA::7}
+      run: echo ${IMAGE_TAG}
