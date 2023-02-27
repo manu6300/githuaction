@@ -16,6 +16,8 @@ jobs:
     environment: dev
 
     steps:
+    - name: checkout
+      uses: actions/checkout@v2
     - name: step
       run: |
         version=$(cat ./values.yaml | grep version: | awk '{print $2}')
