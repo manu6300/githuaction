@@ -18,5 +18,5 @@ jobs:
     steps:
     - name: step
       run: |
-        version:$(cat ./values.yaml | grep version: | awk '{print $2}'
+        version:$(cat ./values.yaml | grep version: | awk '{print $2}')
         sed -i "s/$version/${GITHUB_REF##*/}-${GITHUB_SHA::7}/" ./values.yaml
