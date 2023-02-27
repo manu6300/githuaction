@@ -4,10 +4,6 @@ on:
     branches: [ test ]
   pull_request:
     branches: [ test ]
-env:
-  AWS_REGION: ap-south-1
-  ECR_REPOSITORY: 862166188271.dkr.ecr.ap-south-1.amazonaws.com/dialogflow
-  #VERSION: ${GITHUB_REF##*/}-${GITHUB_SHA::7}
 
 jobs:
   build:
