@@ -19,3 +19,9 @@ jobs:
         version=$(cat ./values.yaml | grep version: | awk '{print $2}')
         sed -i "s/$version/${GITHUB_REF##*/}-${GITHUB_SHA::7}/" ./values.yaml
         echo -e "$version"
+
+    - name: Commit and push changes
+      uses: devops-infra/action-commit-push@v0.3
+      with:
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Version updated        
