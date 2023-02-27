@@ -16,11 +16,5 @@ jobs:
     environment: dev
 
     steps:
-    - name: cloning repo
-      uses: actions/checkout@v2
-    - name: cloning repo docs
-      uses: actions/checkout@v2
-      with:
-        repository: manu6300/src
-        token: ${{ secrets.my_src_pat }}
-        path: ./src/
+    - name: step
+      run: echo ${GITHUB_SHA::7}
