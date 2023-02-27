@@ -17,6 +17,6 @@ jobs:
 
     steps:
     - name: step
-      run:|
+      run: |
         VERSION=${GITHUB_REF##*/}-${GITHUB_SHA::7}
         echo -e "${VERSION}"
