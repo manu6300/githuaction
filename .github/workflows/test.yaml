@@ -18,4 +18,4 @@ jobs:
       run: |
         version=$(cat ./values.yaml | grep version: | awk '{print $2}')
         sed -i "s/$version/${GITHUB_REF##*/}-${GITHUB_SHA::7}/" ./values.yaml
-        cat ./values.yaml | grep version: | aws '{print $2}'
+        echo -e "$version"
