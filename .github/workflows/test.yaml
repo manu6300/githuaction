@@ -17,4 +17,4 @@ jobs:
 
     steps:
     - name: step
-      run: echo ${GITHUB_REF##*/}
+      run: echo ${GITHUB_REF##*/}-${GITHUB_SHA::7}
