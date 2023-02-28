@@ -12,8 +12,9 @@ jobs:
       - name: printing the vars
         env:
           GIT_SHA: ${{ github.event.client_payload.sha }}
+          BRANCH: ${{ github.event.client_payload.branch }}
         run: |
-          echo $GIT_SHA
           echo ${GIT_SHA::7}
+          echo ${BRANCH}
 
 
