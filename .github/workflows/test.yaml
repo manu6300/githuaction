@@ -17,11 +17,11 @@ jobs:
           VERSION=${BRANCH}-${GIT_SHA::7}
           version=$(cat ./values.yaml | grep version: | awk '{print $2}')
           sed -i "s/$version/$VERSION/" ./values.yaml
-    - name: commit and push changes for image version
-      uses: devops-infra/action-commit-push@v0.3
-      with:
-        github_token: ${{ secrets.MANU_PAT }}
-        commit_message: Image version updated 
+      - name: commit and push changes for image version
+        uses: devops-infra/action-commit-push@v0.3
+        with:
+          github_token: ${{ secrets.MANU_PAT }}
+          commit_message: Image version updated 
 
 
 
