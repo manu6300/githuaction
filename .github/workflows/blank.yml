@@ -1,0 +1,19 @@
+name: Workflow2
+
+# Controls when the workflow will run
+on:
+ repository_dispatch:
+    types: [Workflow2]
+jobs:
+  build:
+    name: update image version
+    runs-on: ubuntu-latest
+    env:
+      version: ${{ github.event.client_payload.version }}
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: step
+      run: |
+        echo -e "$version"
