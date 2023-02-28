@@ -24,4 +24,4 @@ jobs:
       uses: devops-infra/action-commit-push@v0.3
       with:
         github_token: ${{ secrets.MY_SRC_PAT }}
-        commit_message: values yaml file updated       
+        commit_message: values yaml file updated ..      
