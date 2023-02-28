@@ -8,5 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.sha }} 
+         fetch-depth: 0
+      - name: printing the vars
+        env:
+          GIT_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          echo $GIT_SHA
+          echo ${GIT_SHA::7}
+
+
