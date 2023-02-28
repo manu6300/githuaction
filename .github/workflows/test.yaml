@@ -1,19 +1,12 @@
-name: Workflow2
-
-# Controls when the workflow will run
+name: dev-workflow
 on:
- repository_dispatch:
-    types: [Workflow2]
+  repository_dispatch:
+    types: [my-event]
 jobs:
-  build:
-    name: update image version
+  myEvent:
     runs-on: ubuntu-latest
-    env:
-      version: ${{ github.event.client_payload.version }}
-
     steps:
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: step
-      run: |
-        echo -e "$version"      
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.sha }} 
