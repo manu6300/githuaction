@@ -14,7 +14,7 @@ jobs:
           GIT_SHA: ${{ github.event.client_payload.sha }}
           BRANCH: ${{ github.event.client_payload.branch }}
         run: |
-          echo ${GIT_SHA::7}
-          echo ${BRANCH}
+          VERSION=${BRANCH}-${GIT_SHA::7}
+          echo $VERSION
 
 
